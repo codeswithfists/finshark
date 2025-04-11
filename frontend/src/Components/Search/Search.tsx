@@ -1,4 +1,5 @@
 import React, { ChangeEvent, useState, SyntheticEvent, FormEvent } from "react";
+import { FaSearch } from "react-icons/fa";
 
 interface Props {
   onSearchSubmit: (e: SyntheticEvent) => void;
@@ -24,7 +25,8 @@ const Search: React.FC<Props> = ({
             placeholder="Search companies"
             value={search}
             onChange={handleSearchChange}
-          ></input>
+          />
+          <button className="bg-gray-100 rounded-lg p-4 border-2" onClick={onSearchSubmit}><FaSearch /></button>
         </form>
       </div>
     </section>

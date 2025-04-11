@@ -36,22 +36,19 @@ namespace api.Data
                 .HasOne(u => u.Stock)
                 .WithMany(u => u.Portfolios)
                 .HasForeignKey(p => p.StockId);
+        }
 
-
-            List<IdentityRole> roles = new List<IdentityRole>
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSeeding((context, _) =>
             {
-                new IdentityRole
+                context.Set<IdentityRole>().AddRange(new List<IdentityRole>
                 {
-                    Name = "Admin",
-                    NormalizedName = "ADMIN"
-                },
-                new IdentityRole
-                {
-                    Name = "User",
-                    NormalizedName = "USER"
-                },
-            };
-            builder.Entity<IdentityRole>().HasData(roles);
+                    new() { Name = "Admin", NormalizedName = "ADMIN" },
+                    new() { Name = "User", NormalizedName = "USER"}
+                });
+                context.SaveChanges();
+            });
         }
     }
 }
