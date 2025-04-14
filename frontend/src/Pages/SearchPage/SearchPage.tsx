@@ -92,7 +92,7 @@ const SearchPage = (props: Props) => {
         searchResults={searchResult}
         onPortfolioCreate={onPortfolioCreate}
       />
-      {serverError && <div>Unable to connect to API</div>}
+      {serverError && <div>Unable to connect to API: {serverError}</div>}
     </>
   );
 };
