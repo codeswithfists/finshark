@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState, SyntheticEvent, FormEvent } from "react";
+import React, { ChangeEvent, SyntheticEvent, JSX } from "react";
 import { FaSearch } from "react-icons/fa";
 
 interface Props {

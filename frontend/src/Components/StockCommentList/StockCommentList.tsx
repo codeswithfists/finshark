@@ -1,4 +1,3 @@
-import React from "react";
 import { CommentGet } from "../../Models/Comment";
 import StockCommentListItem from "../StockCommentListItem/StockCommentListItem";
 
@@ -10,8 +9,8 @@ const StockCommentList = ({ comments }: Props) => {
   return (
     <>
       {comments
-        ? comments.map((comment) => {
-            return <StockCommentListItem comment={comment} />;
+        ? comments.map((comment, index) => {
+            return <StockCommentListItem comment={comment} key={index} />;
           })
         : ""}
     </>

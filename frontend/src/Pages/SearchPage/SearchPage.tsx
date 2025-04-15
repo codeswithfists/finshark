@@ -1,5 +1,4 @@
-import React, { useState, ChangeEvent, SyntheticEvent, useEffect } from "react";
-import Navbar from "../../Components/Navbar/Navbar";
+import { useState, ChangeEvent, SyntheticEvent, useEffect } from "react";
 import { CompanySearch } from "../../company";
 import { searchCompanies } from "../../api";
 import Search from "../../Components/Search/Search";
@@ -47,7 +46,7 @@ const SearchPage = (props: Props) => {
     e.preventDefault();
     portfolioAddAPI(e.target[0].value)
       .then((res) => {
-        if (res?.status === 204) {
+        if (res?.status === 201) {
           toast.success("Stock added to portfolio!");
           getPortfolio();
         }
@@ -92,7 +91,7 @@ const SearchPage = (props: Props) => {
         searchResults={searchResult}
         onPortfolioCreate={onPortfolioCreate}
       />
-      {serverError && <div>Unable to connect to API</div>}
+      {serverError && <div>Unable to connect to API: {serverError}</div>}
     </>
   );
 };
